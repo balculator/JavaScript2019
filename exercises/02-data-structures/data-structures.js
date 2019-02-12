@@ -4,7 +4,7 @@
  */
 
 function createAnArray() {
-  var array = [];
+  var array = ['Python', 'JavaScript', 'C++'];
   /*** Add three items to the array ****/
   return array;
 }
@@ -16,7 +16,8 @@ function createAnArray() {
  */
 
 function accessingAnArray() {
-  var cars = ["BMW", "Honda", "Civic"];
+  var cars = ['BMW', 'Honda', 'Civic'];
+  return cars[0];
 }
 
 /**
@@ -28,7 +29,19 @@ function accessingAnArray() {
  * highestNumber([5, 1, 2, 3, 10]) // [10]
  *
  **/
-function highestNumber(array) {}
+function highestNumber(array) {
+
+  var currentHighValue = 0;
+
+  for (var i = 0; i < array.length; i++) {
+
+    if (array[i] > currentHighValue) {
+      currentHighValue = array[i];
+    }
+
+  }
+  return currentHighValue;
+}
 
 /**
  * Combine an array by using the spread operator
@@ -39,10 +52,14 @@ function highestNumber(array) {}
  * combineArray(['Japan','China','India'], ['USA','UK']) // ['Japan','China','India','USA','UK']
  **/
 
-function combineArray(array1, array2) {}
+function combineArray(array1, array2) {
+
+  var newArray = [...array1, ...array2];
+  return newArray;
+}
 
 /**
- * A palindrom is a word, phrase, or sequence that reads the same backward as forward, e.g., madam, nurses or run.
+ * A palindrom is a word, phrase, or sequence that reads the same backward as forward, e.g., madam, nurses run.
  * Checks to see if a string is a palindrome.
  * Use the split and join methods to solve this problem
  * @param  {[string]}  string
@@ -50,7 +67,19 @@ function combineArray(array1, array2) {}
  *
  */
 
-function isPalindrome(str) {}
+function isPalindrome(str) {
+
+  var forwardStr = str.split("").toString().toLowerCase();
+
+  var backwardsStr = str.split("").reverse().toString();
+
+  if (forwardStr == backwardsStr) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
 
 /**
  * Make an object that represents a dog called myDog which contains the keys
@@ -59,7 +88,18 @@ function isPalindrome(str) {}
  * @return {object}
  */
 
-function createDogObject() {}
+function createDogObject() {
+
+  var dogObject = {
+
+    name: 'Jasper',
+    legs: 4,
+    tails: 1,
+    owners: ['Matt', 'Petra', 'Lucy'],
+  };
+
+  return dogObject;
+}
 
 /**
  * Access testObj and return the value for hat inside clothes (which should be ballcap)
@@ -67,13 +107,13 @@ function createDogObject() {}
  */
 function accessObject() {
   var clothes = {
-    hat: "ballcap",
-    shirt: "jersey",
-    shoes: "cleats"
+    hat: 'ballcap',
+    shirt: 'jersey',
+    shoes: 'cleats'
   };
   // Only change code below this line
 
-  var hatValue = clothes; // Change only this line of code
+  var hatValue = clothes.hat; // Change only this line of code
 
   return hatValue;
 }
@@ -86,11 +126,15 @@ function accessObject() {
 
 function createStudentObject() {
   var student = {
-    firstname: "",
-    lastname: "",
+    firstname: '',
+    lastname: '',
     skills: []
   };
   // Only change code below this line.
+
+  student.firstname = 'Matthew';
+  student.lastname = 'Holland';
+  student.skills = ['teaching math', 'juggling', 'trapeze'];
 
   return student;
 }
@@ -106,11 +150,13 @@ function returnObjectProperties() {
   var dog = {
     tail: 1,
     legs: 4,
-    friends: ["Rusty", "Sparky"],
-    name: "Rocket"
+    friends: ['Rusty', 'Sparky'],
+    name: 'Rocket'
   };
   //Add code here
   //hint you need to return an array
+
+  return [dog.tail, dog.legs, dog.friends, dog.name];
 }
 
 /**
@@ -120,7 +166,29 @@ function returnObjectProperties() {
  * @return {object} obj1 and obj2 combined
  */
 
-function combineObject(obj1, obj2) {}
+function combineObject(obj1, obj2) {
+
+  var newObject = { ...obj1, ...obj2 }
+
+  return newObject;
+
+}
+
+/***
+ *
+ * @return {array}
+ */
+
+function removeDuplicates() {
+  // Use Sets to remove duplicate elements from the array
+  var numbers = [2, 3, 4, 4, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 5, 32, 3, 4, 5];
+
+  var uniqueNumbers = new Set(numbers);
+
+  var uniqueNumbersArray = Array.from(uniqueNumbers);
+  /** Return the an array of unique values */
+  return uniqueNumbersArray;
+}
 
 module.exports = {
   createAnArray,
@@ -132,5 +200,6 @@ module.exports = {
   returnObjectProperties,
   combineArray,
   accessObject,
-  combineObject
+  combineObject,
+  removeDuplicates
 };
