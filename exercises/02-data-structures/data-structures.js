@@ -4,7 +4,10 @@
  */
 
 function createAnArray() {
-  var array = ['Python', 'JavaScript', 'C++'];
+  var array = [];
+
+  array.push('C++', 'JavaScript', 'Assembly');
+
   /*** Add three items to the array ****/
   return array;
 }
