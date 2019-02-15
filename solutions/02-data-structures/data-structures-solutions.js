@@ -4,12 +4,10 @@
  */
 
 function createAnArray() {
-  var array = [];
-
-  array.push('C++', 'JavaScript', 'Assembly');
-
+  var languages = [];
   /*** Add three items to the array ****/
-  return array;
+  languages.push("JavaScript", "Python", "Java");
+  return languages;
 }
 
 /**
@@ -19,7 +17,7 @@ function createAnArray() {
  */
 
 function accessingAnArray() {
-  var cars = ['BMW', 'Honda', 'Civic'];
+  var cars = ["BMW", "Honda", "Civic"];
   return cars[0];
 }
 
@@ -33,17 +31,13 @@ function accessingAnArray() {
  *
  **/
 function highestNumber(array) {
-
-  var currentHighValue = 0;
-
-  for (var i = 0; i < array.length; i++) {
-
-    if (array[i] > currentHighValue) {
-      currentHighValue = array[i];
+  var highestNumber = array[0];
+  for (var value of array) {
+    if (value > highestNumber) {
+      highestNumber = value;
     }
-
   }
-  return currentHighValue;
+  return highestNumber;
 }
 
 /**
@@ -56,13 +50,11 @@ function highestNumber(array) {
  **/
 
 function combineArray(array1, array2) {
-
-  var newArray = [...array1, ...array2];
-  return newArray;
+  return [...array1, ...array2];
 }
 
 /**
- * A palindrom is a word, phrase, or sequence that reads the same backward as forward, e.g., madam, nurses run.
+ * A palindrom is a word, phrase, or sequence that reads the same backward as forward, e.g., madam, nurses or run.
  * Checks to see if a string is a palindrome.
  * Use the split and join methods to solve this problem
  * @param  {[string]}  string
@@ -70,18 +62,32 @@ function combineArray(array1, array2) {
  *
  */
 
+// Answer 1
 function isPalindrome(str) {
+  var itIsAParlindrom = true;
 
-  var forwardStr = str.split("").toString().toLowerCase();
+  var letters = str.toLowerCase().split("");
+  // @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse
+  var lettersReversed = [...letters].reverse();
 
-  var backwardsStr = str.split("").reverse().toString();
+  for (var i = 0, j = letters.length; i < j; i++) {
+    var letter = letters[i];
+    var reverseLetter = lettersReversed[i];
 
-  if (forwardStr == backwardsStr) {
-    return true;
+    if (letter !== reverseLetter) {
+      itIsAParlindrom = false;
+      break;
+    }
   }
-  else {
-    return false;
-  }
+
+  return itIsAParlindrom;
+}
+
+// Answer 2
+function isPalindrome(str) {
+  var newStr = str.toLowerCase();
+  // @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse
+  return newStr === [...newStr].reverse().join("");
 }
 
 /**
@@ -92,33 +98,46 @@ function isPalindrome(str) {
  */
 
 function createDogObject() {
-
-  var dogObject = {
-
-    name: 'Jasper',
+  var myDog = {
+    name: "Della",
     legs: 4,
     tails: 1,
-    owners: ['Matt', 'Petra', 'Lucy'],
+    owners: ["Matina", "Jamal"]
   };
-
-  return dogObject;
+  return myDog;
 }
 
 /**
  * Access testObj and return the value for hat inside clothes (which should be ballcap)
  * @return {string} type of hat
  */
+
+// Answer 1 - Dot syntax
 function accessObject() {
   var clothes = {
-    hat: 'ballcap',
-    shirt: 'jersey',
-    shoes: 'cleats'
+    hat: "ballcap",
+    shirt: "jersey",
+    shoes: "cleats"
   };
   // Only change code below this line
 
   var hatValue = clothes.hat; // Change only this line of code
 
   return hatValue;
+}
+
+// Answer 2 - Destructuring
+function accessObject() {
+  var clothes = {
+    hat: "ballcap",
+    shirt: "jersey",
+    shoes: "cleats"
+  };
+  // Only change code below this line
+
+  var { hat } = clothes.hat; // Change only this line of code
+
+  return hat;
 }
 
 /**
@@ -129,15 +148,15 @@ function accessObject() {
 
 function createStudentObject() {
   var student = {
-    firstname: '',
-    lastname: '',
+    firstname: "",
+    lastname: "",
     skills: []
   };
   // Only change code below this line.
 
-  student.firstname = 'Matthew';
-  student.lastname = 'Holland';
-  student.skills = ['teaching math', 'juggling', 'trapeze'];
+  student.firstname = "Jamal";
+  student.lastname = "Taylor";
+  student.skills.push("JavaScript", "HTML", "CSS");
 
   return student;
 }
@@ -153,13 +172,12 @@ function returnObjectProperties() {
   var dog = {
     tail: 1,
     legs: 4,
-    friends: ['Rusty', 'Sparky'],
-    name: 'Rocket'
+    friends: ["Rusty", "Sparky"],
+    name: "Rocket"
   };
   //Add code here
   //hint you need to return an array
-
-  return [dog.tail, dog.legs, dog.friends, dog.name];
+  return Object.keys(dog);
 }
 
 /**
@@ -167,34 +185,18 @@ function returnObjectProperties() {
  * @param  {object} obj1
  * @param  {object} obj2
  * @return {object} obj1 and obj2 combined
+ *
  */
 
 function combineObject(obj1, obj2) {
-
-  var newObject = { ...obj1, ...obj2 }
-
-  return newObject;
-
+  return {
+    ...obj1,
+    ...obj2
+  };
 }
 
 /***
- *
- * @return {array}
- */
-
-function removeDuplicates() {
-  // Use Sets to remove duplicate elements from the array
-  var numbers = [2, 3, 4, 4, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 5, 32, 3, 4, 5];
-
-  var uniqueNumbers = new Set(numbers);
-
-  var uniqueNumbersArray = Array.from(uniqueNumbers);
-  /** Return the an array of unique values */
-  return uniqueNumbersArray;
-}
-
-/***
- *
+ * Use Sets to remove duplicate elements from the array
  * @return {array}
  */
 
@@ -203,7 +205,8 @@ function removeDuplicates() {
   var numbers = [2, 3, 4, 4, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 5, 32, 3, 4, 5];
 
   /** Return the an array of unique values */
-  return;
+  var set = new Set(numbers);
+  return [...set];
 }
 
 module.exports = {

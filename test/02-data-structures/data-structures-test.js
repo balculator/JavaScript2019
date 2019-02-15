@@ -11,7 +11,8 @@ const {
   returnObjectProperties,
   combineArray,
   accessObject,
-  combineObject
+  combineObject,
+  removeDuplicates
 } = require("../../exercises/02-data-structures/data-structures.js");
 
 describe("Data structures", () => {
@@ -24,8 +25,10 @@ describe("Data structures", () => {
     expect(car).to.equal("BMW");
   });
   it("it should return the highest number in the array", () => {
-    const number = highestNumber([1, 2, 3, 4, 10, -1]);
-    expect(number).to.equal(10);
+    const number1 = highestNumber([1, 2, 3, 4, 10, -1]);
+    expect(number1).to.equal(10);
+    const number2 = highestNumber([0, 0, 0, 1]);
+    expect(number2).to.equal(1);
   });
   it("it should merge both arrays", () => {
     const combinedArray = combineArray(["HTML"], ["CSS"]);
@@ -72,5 +75,29 @@ describe("Data structures", () => {
       firstName: "Clark",
       lastName: "Kent"
     });
+  });
+  it("should remove all duplicate values", () => {
+    const unique = removeDuplicates([
+      2,
+      3,
+      4,
+      4,
+      2,
+      3,
+      3,
+      4,
+      4,
+      5,
+      5,
+      6,
+      6,
+      7,
+      5,
+      32,
+      3,
+      4,
+      5
+    ]);
+    expect(unique).to.be.equalTo([2, 3, 4, 5, 6, 7, 32]);
   });
 });
