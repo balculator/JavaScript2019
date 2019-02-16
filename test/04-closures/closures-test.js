@@ -5,7 +5,7 @@ const {
   guessingGame
 } = require("../../exercises/04-closures/closures");
 
-describe.only("Closures", () => {
+describe("Closures", () => {
   describe("calculator", () => {
     it("should return an object with two functions", () => {
       const calcObj = calculator();

@@ -6,7 +6,7 @@ const {
   repeatStringNumTimes
 } = require("../../exercises/04-challenges/challenges");
 
-describe("Challenges", () => {
+describe.only("Challenges", () => {
   it("it should return length of the longest Word", () => {
     const longestWordLength = findLongestWordLength(
       "May the force be with you"

@@ -67,7 +67,7 @@ const guessingGame = (numberOfRounds) => {
   let guesses = 0;
 
   return function (guess) {
-
+    guesses++
     if (guesses < numberOfRounds) {
 
       if (guess == answer) {
@@ -81,8 +81,11 @@ const guessingGame = (numberOfRounds) => {
       }
 
     }
+    else if (guesses >= numberOfRounds) {
+      return "No more guesses. The answer was " + answer;
+    }
   }
-  guesses++
+
 };
 
 

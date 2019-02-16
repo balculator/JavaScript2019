@@ -33,15 +33,15 @@ var confirmEnding = (checkString, ending) => {
 
 
 var repeatStringNumTimes = (repeatedString, numTimes) => {
-  /*
-    var repeated = '';
-  
-    for (var i = 0, i <numTimes, i++) {
-      repeated = repeated + repeatedString;
-    }
-  
-    return repeated;
-  */
+
+  var repeated = '';
+
+  for (var i = 0; i < numTimes; i++) {
+    repeated = repeated + repeatedString;
+  }
+
+  return repeated;
+
 };
 
 /**
@@ -56,6 +56,17 @@ var repeatStringNumTimes = (repeatedString, numTimes) => {
 
 var findLongestWordLength = (longString) => {
 
+  var longStringArray = longString.split(' ');
+
+  var longestWordLength = 0;
+
+  for (var i = 0; i < longStringArray.length; i++) {
+    if (longStringArray[i].length > longestWordLength) {
+      longestWordLength = longStringArray[i].length;
+    }
+  }
+
+  return longestWordLength;
 
 };
 
