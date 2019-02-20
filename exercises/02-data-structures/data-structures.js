@@ -198,13 +198,15 @@ function removeDuplicates() {
  * @return {array}
  */
 
+/*
 function removeDuplicates() {
-  // Use Sets to remove duplicate elements from the array
-  var numbers = [2, 3, 4, 4, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 5, 32, 3, 4, 5];
+ // Use Sets to remove duplicate elements from the array
+ var numbers = [2, 3, 4, 4, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 5, 32, 3, 4, 5];
 
-  /** Return the an array of unique values */
-  return;
-}
+ /** Return the an array of unique values */
+//  return;
+//}
+
 
 module.exports = {
   createAnArray,

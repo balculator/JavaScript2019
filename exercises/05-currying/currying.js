@@ -13,7 +13,21 @@
  * @param {number} a
  * @param {number} b
  */
-const multiplier = (a, b) => {};
+const multiplier = (a, b) => {
+
+  if (a && b) {
+    return a * b;
+  }
+
+  else {
+    return function (b) {
+      return a * b;
+    }
+  }
+
+
+
+};
 
 module.exports = {
   multiplier

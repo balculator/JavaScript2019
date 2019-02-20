@@ -74,10 +74,10 @@ const guessingGame = (numberOfRounds) => {
         return "You got it!";
       }
       else if (guess < answer) {
-        return "You\'re too low!";
+        return "You're too low!";
       }
       else if (guess > answer) {
-        return "You\'re too high!";
+        return "You're too high!";
       }
 
     }
