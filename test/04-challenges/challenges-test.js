@@ -7,7 +7,7 @@ const {
 } = require("../../exercises/04-challenges/challenges");
 
 <<<<<<< HEAD
-describe.only("Challenges", () => {
+describe.("Challenges", () => {
   it("it should return length of the longest Word", () => {
     const longestWordLength = findLongestWordLength(
       "May the force be with you"
