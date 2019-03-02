@@ -6,17 +6,13 @@ const {
   repeatStringNumTimes
 } = require("../../exercises/04-challenges/challenges");
 
-<<<<<<< HEAD
-describe.("Challenges", () => {
+describe("Challenges", () => {
   it("it should return length of the longest Word", () => {
     const longestWordLength = findLongestWordLength(
       "May the force be with you"
     );
     expect(longestWordLength).to.equal(5);
   });
-=======
-describe("Challenges", () => {
->>>>>>> 6c31d47e3b12a5bc48a6c5484679f0875310bac9
   it("it should return a boolean if the second argument given to the function is the last letter of the string", () => {
     const lastLetter = confirmEnding("Bastian", "n");
     expect(lastLetter).to.equal(true);
