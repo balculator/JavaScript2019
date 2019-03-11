@@ -22,15 +22,15 @@ const { tree } = require('./recursion-tree-data');
  */
 const findId = (data, id) => {
 
-  for (stuff in data) {
-    if (typeof stuff !== 'object') {
-      arrayOfStuff = [...stuff];
+  for (var i in data) {
+
+    if (data[i].id == id) {
+      return data[i];
     }
-    else {
-      findId
+    else if (data[i].children) {
+      return findId(data[i].children, id);
     }
   }
-
 
 };
 
@@ -62,7 +62,32 @@ const findId = (data, id) => {
  * }
  */
 
-const deleteStore = (stores, id) => { };
+const deleteStore = (stores, id) => {
+
+
+  for (var j in stores) {
+
+
+    if (stores[j].id == id) {
+      console.log('i am tryting to delete');
+      console.log(stores[j]);
+      delete stores[j];
+      return stores;
+    }
+    else if (stores[j].branches) {
+      console.log('inside else statement');
+      console.log(stores[j]);
+      return deleteStore(stores[j].branches, id);
+    }
+
+
+
+
+  }
+
+
+
+};
 
 module.exports = {
   findId,

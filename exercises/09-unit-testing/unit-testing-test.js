@@ -44,6 +44,12 @@ describe("Unit Testing", () => {
   /**
    * Write a unit test for `subtract` here.
    */
+  describe("subtract", () => {
+    it("should find the difference of two numbers", () => {
+      const difference = subtract(10, 8);
+      expect(difference).to.equal(2);
+    })
+  })
 
   /**
    * Write two tests for `isEvenNumber` here.
@@ -51,9 +57,18 @@ describe("Unit Testing", () => {
    * @see https://www.chaijs.com/api/bdd/
    */
 
+  describe("isEvenNumber", () => {
+    it("should return TRUE if number is even and FALSE if number is odd", () => {
+      const notEven = isEvenNumber(27);
+      expect(notEven).to.be.false;
+      const actuallyEven = isEvenNumber(52);
+      expect(actuallyEven).to.be.true;
+    })
+  })
+
   describe("findAdults", () => {
     // Remove the `.skip` when you are ready to write this test
-    it.skip("will find, in a multidimensional array, all the people older than 18", () => {
+    it("will find, in a multidimensional array, all the people older than 18", () => {
       /**
        * Complete the unit test for findAdults here.
        * Hint: Arrays are passed by reference, so you will need to call on a test that deeply compares values.
@@ -64,10 +79,14 @@ describe("Unit Testing", () => {
         { name: "Aiden", age: 10 },
         { name: "Chloe", age: 16 }
       ];
+
+      const checkForAdults = findAdults(people);
+      expect(checkForAdults).to.deep.equal([{ name: "Janet", age: 43 }]);
+
     });
 
     // Remove the `.skip` when you are ready to write this test
-    it.skip("will return an empty array if no adults are found", () => {
+    it("will return an empty array if no adults are found", () => {
       /**
        * Complete the unit test for findAdults here, where you use a different assertion than `.equal()`
        * @see https://www.chaijs.com/api/bdd/
@@ -77,6 +96,9 @@ describe("Unit Testing", () => {
         { name: "Emma", age: 17 },
         { name: "Ethan", age: 8 }
       ];
+
+      const checkForAdults = findAdults(people);
+      expect(checkForAdults).to.deep.equal([]);
     });
   });
 });
