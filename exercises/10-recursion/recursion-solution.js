@@ -1,5 +1,5 @@
-const { departmentStores } = require("./recursion-departmentStores-data");
-const { tree } = require("./recursion-tree-data");
+const { departmentStores } = require('./recursion-departmentStores-data');
+const { tree } = require('./recursion-tree-data');
 
 /**
  * Using recursion, find the object in the node tree that has a given id.
@@ -21,19 +21,42 @@ const { tree } = require("./recursion-tree-data");
  * }
  */
 const findId = (data, id) => {
+  // let node = data.reduce((a, element, index) => {
+  //   console.log(a);
+  //   if (a) {
+  //     return a;
+  //   }
+  //   if (element.id === id) {
+  //     return element;
+  //   } else if (element.children) {
+  //     return findId(element.children, id);
+  //   }
+  // }, null);
+  // return node;
+  // let element = null;
+  // return data.reduce((a, element, index) => {
+  //   if (a) {
+  //     return a;
+  //   }
+  //   if (element.id === id) {
+  //     return element;
+  //   } else if (element.children) {
+  //     return findId(element.children, id);
+  //   }
+  // }, null);
 
-  for (var i in data) {
-
+  for (let i in data) {
     if (data[i].id == id) {
+      console.log('here', data[i]);
       return data[i];
-    }
-    else if (data[i].children) {
+    } else if (data[i].children) {
+      console.log(data[i]);
       return findId(data[i].children, id);
     }
   }
-
+  console.log(test);
 };
-
+console.log(findId(tree, 5777777));
 /**
  * Using recursion, remove the object from the node tree that has a given id.
  * You will be looping through the data in *recursion-delete-store.json*
@@ -63,30 +86,15 @@ const findId = (data, id) => {
  */
 
 const deleteStore = (stores, id) => {
-
-
-  for (var j in stores) {
-
-
-    if (stores[j].id == id) {
-      console.log('i am tryting to delete');
-      console.log(stores[j]);
-      delete stores[j];
-      return stores;
+  return stores.reduce((arr, item) => {
+    if (item.id != id) {
+      if (item.branches) {
+        item.branches = deleteStore(item.branches, id);
+      }
+      arr.push(item);
     }
-    else if (stores[j].branches) {
-      console.log('inside else statement');
-      console.log(stores[j]);
-      return deleteStore(stores[j].branches, id);
-    }
-
-
-
-
-  }
-
-
-
+    return arr;
+  }, []);
 };
 
 module.exports = {
