@@ -64,24 +64,17 @@ const findId = (data, id) => {
 
 const deleteStore = (stores, id) => {
 
-
   for (var j in stores) {
 
-
-    if (stores[j].id == id) {
-      console.log('i am tryting to delete');
-      console.log(stores[j]);
-      delete stores[j];
+    if (stores[j].id == id && stores[j].branches == undefined) {
+      delete stores[j]
       return stores;
     }
+
     else if (stores[j].branches) {
-      console.log('inside else statement');
       console.log(stores[j]);
       return deleteStore(stores[j].branches, id);
     }
-
-
-
 
   }
 
